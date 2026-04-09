@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order</title>
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="icon" href="../images/favicon.ico" />
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">The Webshop</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="ms-auto">
+            <a class="btn btn-outline-light me-2" href="products.html"
+              >Products</a
+            >
+            <a class="btn btn-outline-light" href="index.html">Home</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header class="text-center mt-4">
+      <img src="../images/logo.png" class="img-fluid logo-custom mb-4" />
+      <h1>Order</h1>
+    </header>
+
+    <main class="flex-grow-1">
+      <form id="orderForm" novalidate>
+        <input id="name" name="name" type="text" placeholder="Name" required />
+        <input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="Email"
+          required
+        />
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          inputmode="numeric"
+          placeholder="Phone Number"
+          required
+        />
+        <input
+          id="street"
+          name="street"
+          type="text"
+          placeholder="Street"
+          required
+        />
+        <input
+          id="zip"
+          name="zip"
+          type="tel"
+          inputmode="numeric"
+          placeholder="Zip Code"
+          required
+        />
+        <input id="city" name="city" type="text" placeholder="City" required />
+
+        <div class="buttons">
+          <button type="submit" id="submit-button">Submit</button>
+          <button type="button" id="cancel-button">Cancel</button>
+        </div>
+      </form>
+      <p id="message" class="text-center"></p>
+    </main>
+
+    <footer class="bg-dark text-white text-center p-3 mt-auto">
+      <div class="container">
+        <p class="mb-0">© 2026 The Webshop av Daniel L, Igor G, Patric W</p>
+      </div>
+    </footer>
+
+    <script src="../js/bootstrap.bundle.js"></script>
+    <script src="../js/order.js"></script>
+  </body>
+</html>
