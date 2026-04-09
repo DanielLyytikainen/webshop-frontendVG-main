@@ -19,7 +19,7 @@ function updateCartCount() {
   const desktop = document.getElementById("cart-count");
   const mobile = document.getElementById("cart-count-mobile");
 
-  [desktop, mobile].forEach(el => {
+  [desktop, mobile].forEach((el) => {
     if (!el) return;
 
     if (total > 0) {
@@ -96,13 +96,12 @@ function changeQuantity(index, change) {
 }
 
 function clearCart() {
-  const ids = shoppingcart.map(item => item.id);
+  const ids = shoppingcart.map((item) => item.id);
   shoppingcart = [];
   saveCart();
   updateCartCount();
   renderCart();
-  ids.forEach(id => updateProductUI(id));
-  
+  ids.forEach((id) => updateProductUI(id));
 }
 
 function addToCart(id, title, price, image) {
@@ -167,7 +166,7 @@ window.addEventListener("storage", () => {
   updateAllProductsUI();
 });
 function updateAllProductsUI() {
-  document.querySelectorAll("[id^='qty-']").forEach(el => {
+  document.querySelectorAll("[id^='qty-']").forEach((el) => {
     const id = parseInt(el.id.replace("qty-", ""));
     updateProductUI(id);
   });

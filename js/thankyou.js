@@ -9,7 +9,7 @@ function renderThankYou() {
   list.innerHTML = "";
   let total = 0;
 
-  order.forEach(item => {
+  order.forEach((item) => {
     const li = document.createElement("li");
     li.classList.add("list-group-item");
 

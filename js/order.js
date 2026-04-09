@@ -15,8 +15,6 @@ if (zipInput) {
   });
 }
 
-
-
 if (cancelBtn) {
   cancelBtn.addEventListener("click", function () {
     const confirmCancel = confirm(
@@ -24,8 +22,8 @@ if (cancelBtn) {
     );
 
     if (confirmCancel) {
-    localStorage.removeItem("shoppingcart");
-   window.location.href = "index.html";
+      localStorage.removeItem("shoppingcart");
+      window.location.href = "index.html";
     }
   });
 }
@@ -85,7 +83,7 @@ function renderOrderSummary() {
   list.innerHTML = "";
   let total = 0;
 
-  shoppingcart.forEach(item => {
+  shoppingcart.forEach((item) => {
     const li = document.createElement("li");
     li.classList.add("list-group-item");
 

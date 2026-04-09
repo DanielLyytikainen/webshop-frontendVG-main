@@ -43,4 +43,3 @@
   .catch((err) => {
     console.error("Both APIs failed:", err);
   });
-
