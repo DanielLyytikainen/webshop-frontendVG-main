@@ -202,3 +202,6 @@ footer {
   gap: 8px;
   margin-top: 5px;
 }
+.bi-cart {
+  font-size: 1.2rem;
+}

@@ -11,8 +11,20 @@ function getQuantity(id) {
 
 function updateCartCount() {
   const total = shoppingcart.reduce((sum, item) => sum + item.quantity, 0);
-  const el = document.getElementById("cart-count");
-  if (el) el.textContent = total;
+
+  const desktop = document.getElementById("cart-count");
+  const mobile = document.getElementById("cart-count-mobile");
+
+  [desktop, mobile].forEach(el => {
+    if (!el) return;
+
+    if (total > 0) {
+      el.textContent = total;
+      el.style.display = "inline-block";
+    } else {
+      el.style.display = "none";
+    }
+  });
 }
 
 function toggleCart() {
