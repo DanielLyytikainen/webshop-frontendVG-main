@@ -2,6 +2,10 @@ let shoppingcart = JSON.parse(localStorage.getItem("shoppingcart")) || [];
 
 function saveCart() {
   localStorage.setItem("shoppingcart", JSON.stringify(shoppingcart));
+
+  updateCartCount();
+  renderCart();
+  updateAllProductsUI();
 }
 
 function getQuantity(id) {
@@ -88,13 +92,17 @@ function changeQuantity(index, change) {
   saveCart();
   updateCartCount();
   renderCart();
+  updateProductUI(id);
 }
 
 function clearCart() {
+  const ids = shoppingcart.map(item => item.id);
   shoppingcart = [];
   saveCart();
   updateCartCount();
   renderCart();
+  ids.forEach(id => updateProductUI(id));
+  
 }
 
 function addToCart(id, title, price, image) {
@@ -149,6 +157,20 @@ function removeItem(index) {
   saveCart();
   updateCartCount();
   renderCart();
+  updateProductUI(id);
+}
+window.addEventListener("storage", () => {
+  shoppingcart = JSON.parse(localStorage.getItem("shoppingcart")) || [];
+
+  updateCartCount();
+  renderCart();
+  updateAllProductsUI();
+});
+function updateAllProductsUI() {
+  document.querySelectorAll("[id^='qty-']").forEach(el => {
+    const id = parseInt(el.id.replace("qty-", ""));
+    updateProductUI(id);
+  });
 }
 
 updateCartCount();
