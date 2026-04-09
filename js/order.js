@@ -1,5 +1,3 @@
-const product = JSON.parse(localStorage.getItem("selectedProduct"));
-const productDiv = document.getElementById("selected-product");
 const form = document.getElementById("orderForm");
 const message = document.getElementById("message");
 const cancelBtn = document.getElementById("cancel-button");
@@ -17,13 +15,7 @@ if (zipInput) {
   });
 }
 
-if (productDiv) {
-  if (product) {
-    productDiv.innerHTML = `<h3>${product.title}</h3>`;
-  } else {
-    productDiv.innerHTML = `<p>No product selected.</p>`;
-  }
-}
+
 
 if (cancelBtn) {
   cancelBtn.addEventListener("click", function () {
@@ -32,8 +24,8 @@ if (cancelBtn) {
     );
 
     if (confirmCancel) {
-      localStorage.removeItem("selectedProduct");
-      window.location.href = "index.html";
+    localStorage.removeItem("shoppingcart");
+   window.location.href = "index.html";
     }
   });
 }
@@ -75,10 +67,40 @@ if (form) {
     message.style.color = "green";
 
     form.reset();
-    localStorage.removeItem("selectedProduct");
+    localStorage.setItem("lastOrder", JSON.stringify(shoppingcart));
+    localStorage.removeItem("shoppingcart");
 
     setTimeout(() => {
       window.location.href = "thankyou.html";
     }, 500);
   });
 }
+
+function renderOrderSummary() {
+  const list = document.getElementById("order-items");
+  const totalText = document.getElementById("order-total");
+
+  if (!list || !totalText) return;
+
+  list.innerHTML = "";
+  let total = 0;
+
+  shoppingcart.forEach(item => {
+    const li = document.createElement("li");
+    li.classList.add("list-group-item");
+
+    const sum = item.price * item.quantity;
+    total += sum;
+
+    li.innerHTML = `
+      <strong>${item.title}</strong><br>
+      ${item.price} $ x ${item.quantity} = ${sum.toFixed(2)} $
+    `;
+
+    list.appendChild(li);
+  });
+
+  totalText.textContent = "Totalt: " + total.toFixed(2) + " $";
+}
+
+document.addEventListener("DOMContentLoaded", renderOrderSummary);

@@ -12,6 +12,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <a class="navbar-brand" href="index.html">The Webshop</a>
+        <a href="#" onclick="toggleCart()"
+          >🛒 (<span id="cart-count">0</span>)</a
+        >
 
         <button
           class="navbar-toggler"
@@ -77,8 +80,11 @@
           <button type="submit" id="submit-button">Submit</button>
           <button type="button" id="cancel-button">Cancel</button>
         </div>
+        <p id="message" class="text-center"></p>
+        <h3 class="text-center">Din beställning</h3>
+        <ul id="order-items" class="list-group"></ul>
+        <p id="order-total" class="mt-2"></p>
       </form>
-      <p id="message" class="text-center"></p>
     </main>
 
     <footer class="bg-dark text-white text-center p-3 mt-auto">
@@ -88,6 +94,23 @@
     </footer>
 
     <script src="../js/bootstrap.bundle.js"></script>
+    <script src="../js/shoppingcart.js"></script>
     <script src="../js/order.js"></script>
+    <div id="overlay" onclick="toggleCart()"></div>
+
+    <div id="cart-drawer" class="cart-drawer">
+      <h3>🛒 Varukorg</h3>
+      <ul id="cart-items"></ul>
+      <p id="cart-total"></p>
+      <div class="cart-buttons">
+        <button onclick="goToOrder()" class="btn btn-success">Order</button>
+        <button onclick="clearCart()" class="btn btn-outline-dark">
+          Clear
+        </button>
+        <button onclick="toggleCart()" class="btn btn-outline-dark">
+          Close
+        </button>
+      </div>
+    </div>
   </body>
 </html>

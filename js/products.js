@@ -27,19 +27,20 @@
         <img src="${image}" width="100">
         <h3>${title}</h3>
         <p class="price">${price} $</p>
-        <button>Buy Now</button>
+
+        <div>
+          <button onclick="addToCart(${product.id}, \`${title}\`, ${price}, \`${image}\`)">+</button>
+          <button onclick="removeFromCart(${product.id})">-</button>
+        </div>
+
+        <p id="qty-${product.id}">Antal: ${getQuantity(product.id)}</p>
       `;
 
-      const button = card.querySelector("button");
-
-      button.addEventListener("click", () => {
-        localStorage.setItem("selectedProduct", JSON.stringify(product));
-        window.location.href = "order.html";
-      });
-
       container.appendChild(card);
+      updateProductUI(product.id);
     });
   })
   .catch((err) => {
     console.error("Both APIs failed:", err);
   });
+
